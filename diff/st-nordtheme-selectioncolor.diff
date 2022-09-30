@@ -1,0 +1,27 @@
+From ad0ad332a2ba24ba447ab372e6aa9bf556eacd88 Mon Sep 17 00:00:00 2001
+From: Cathal O'Grady <fierceinbattle@gmail.com>
+Date: Fri, 30 Sep 2022 20:29:36 +0100
+Subject: [PATCH] added patch to make nordtheme and selectioncolor work nicely
+
+---
+ config.def.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 2f86c30..b07989f 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -131,8 +131,8 @@ unsigned int defaultfg = 256;
+ unsigned int defaultbg = 257;
+ unsigned int defaultcs = 256;
+ static unsigned int defaultrcs = 256;
+-unsigned int selectionbg = 257;
+-unsigned int selectionfg = 7;
++unsigned int selectionbg = 0;
++unsigned int selectionfg = 256;
+ /* If 0 use selectionfg as foreground in order to have a uniform foreground-color */
+ /* Else if 1 keep original foreground-color of each cell => more colors :) */
+ static int ignoreselfg = 1;
+-- 
+2.37.3
+
