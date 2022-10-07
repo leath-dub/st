@@ -1,0 +1,212 @@
+From 0466f2935e979b2d050c26f26a11ec15c7346773 Mon Sep 17 00:00:00 2001
+From: Cathal O'Grady <fierceinbattle@gmail.com>
+Date: Fri, 7 Oct 2022 15:21:18 +0100
+Subject: [PATCH] added a theme.h file, which keeps themes together in a nice
+ way
+
+---
+ .gitignore   |   3 +-
+ config.def.h |   2 +-
+ theme.h      | 115 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ theme/nord.h |  43 -------------------
+ 4 files changed, 117 insertions(+), 46 deletions(-)
+ create mode 100644 theme.h
+ delete mode 100644 theme/nord.h
+
+diff --git a/.gitignore b/.gitignore
+index 51017d8..7ad75b3 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -19,5 +19,4 @@
+ !diff
+ !diff/*
+ 
+-!theme
+-!theme/*
++!theme.h
+diff --git a/config.def.h b/config.def.h
+index 9824425..6749308 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -93,7 +93,7 @@ char *termname = "st-256color";
+  */
+ unsigned int tabspaces = 8;
+ 
+-#include "theme/nord.h"
++#include "theme.h"
+ 
+ /*
+  * Default shape of cursor
+diff --git a/theme.h b/theme.h
+new file mode 100644
+index 0000000..5fb2442
+--- /dev/null
++++ b/theme.h
+@@ -0,0 +1,115 @@
++#define bright(COLOR) BRT##COLOR = (COLOR + 8)
++enum { black, red, green, yellow, blue, magenta, cyan, white,
++       bright(black), bright(red), bright(green), bright(yellow),
++       bright(blue), bright(magenta), bright(cyan), bright(white),
++       foreground = 256, background = 257};
++#undef bright
++#define bright(COLOR) (COLOR + 8)
++
++#define dark_hard {                                                           \
++  [black          ] = "#4b565c", [red            ] = "#e67e80",               \
++  [green          ] = "#a7c080", [yellow         ] = "#dbbc7f",               \
++  [blue           ] = "#7fbbb3", [magenta        ] = "#d699b6",               \
++  [cyan           ] = "#83c092", [white          ] = "#d3c6aa",               \
++  [bright(black)  ] = "#4b565c", [bright(red)    ] = "#e67e80",               \
++  [bright(green)  ] = "#a7c080", [bright(yellow) ] = "#dbbc7f",               \
++  [bright(blue)   ] = "#7fbbb3", [bright(magenta)] = "#d699b6",               \
++  [bright(cyan)   ] = "#83c092", [bright(white)  ] = "#d3c6aa",               \
++  [255            ] =         0, [foreground     ] = "#d3c6aa",               \
++  [background     ] = "#2b3339",                                              \
++}
++
++#define dark_medium {                                                         \
++  [black          ] = "#4b565c", [red            ] = "#e67e80",               \
++  [green          ] = "#a7c080", [yellow         ] = "#dbbc7f",               \
++  [blue           ] = "#7fbbb3", [magenta        ] = "#d699b6",               \
++  [cyan           ] = "#83c092", [white          ] = "#d3c6aa",               \
++  [bright(black)  ] = "#4b565c", [bright(red)    ] = "#e67e80",               \
++  [bright(green)  ] = "#a7c080", [bright(yellow) ] = "#dbbc7f",               \
++  [bright(blue)   ] = "#7fbbb3", [bright(magenta)] = "#d699b6",               \
++  [bright(cyan)   ] = "#83c092", [bright(white)  ] = "#d3c6aa",               \
++  [255            ] =         0, [foreground     ] = "#d3c6aa",               \
++  [background     ] = "#2f383e",                                              \
++}
++
++#define dark_soft {                                                           \
++  [black          ] = "#4b565c", [red            ] = "#e67e80",               \
++  [green          ] = "#a7c080", [yellow         ] = "#dbbc7f",               \
++  [blue           ] = "#7fbbb3", [magenta        ] = "#d699b6",               \
++  [cyan           ] = "#83c092", [white          ] = "#d3c6aa",               \
++  [bright(black)  ] = "#4b565c", [bright(red)    ] = "#e67e80",               \
++  [bright(green)  ] = "#a7c080", [bright(yellow) ] = "#dbbc7f",               \
++  [bright(blue)   ] = "#7fbbb3", [bright(magenta)] = "#d699b6",               \
++  [bright(cyan)   ] = "#83c092", [bright(white)  ] = "#d3c6aa",               \
++  [255            ] =         0, [foreground     ] = "#d3c6aa",               \
++  [background     ] = "#323d43",                                              \
++}
++
++#define light_hard {                                                          \
++  [black          ] = "#5c6a72", [red            ] = "#f85552",               \
++  [green          ] = "#8da101", [yellow         ] = "#dfa000",               \
++  [blue           ] = "#3a94c5", [magenta        ] = "#df69ba",               \
++  [cyan           ] = "#35a77c", [white          ] = "#dfddc8",               \
++  [bright(black)  ] = "#5c6a72", [bright(red)    ] = "#f85552",               \
++  [bright(green)  ] = "#8da101", [bright(yellow) ] = "#dfa000",               \
++  [bright(blue)   ] = "#3a94c5", [bright(magenta)] = "#df69ba",               \
++  [bright(cyan)   ] = "#35a77c", [bright(white)  ] = "#dfddc8",               \
++  [255            ] =         0, [foreground     ] = "#5c6a72",               \
++  [background     ] = "#fff9e8",                                              \
++}
++
++#define light_medium {                                                        \
++  [black          ] = "#5c6a72", [red            ] = "#f85552",               \
++  [green          ] = "#8da101", [yellow         ] = "#dfa000",               \
++  [blue           ] = "#3a94c5", [magenta        ] = "#df69ba",               \
++  [cyan           ] = "#35a77c", [white          ] = "#dfddc8",               \
++  [bright(black)  ] = "#5c6a72", [bright(red)    ] = "#f85552",               \
++  [bright(green)  ] = "#8da101", [bright(yellow) ] = "#dfa000",               \
++  [bright(blue)   ] = "#3a94c5", [bright(magenta)] = "#df69ba",               \
++  [bright(cyan)   ] = "#35a77c", [bright(white)  ] = "#dfddc8",               \
++  [255            ] =         0, [foreground     ] = "#5c6a72",               \
++  [background     ] = "#fdf6e3",                                              \
++}
++
++#define light_soft {                                                        \
++  [black          ] = "#5c6a72", [red            ] = "#f85552",               \
++  [green          ] = "#8da101", [yellow         ] = "#dfa000",               \
++  [blue           ] = "#3a94c5", [magenta        ] = "#df69ba",               \
++  [cyan           ] = "#35a77c", [white          ] = "#dfddc8",               \
++  [bright(black)  ] = "#5c6a72", [bright(red)    ] = "#f85552",               \
++  [bright(green)  ] = "#8da101", [bright(yellow) ] = "#dfa000",               \
++  [bright(blue)   ] = "#3a94c5", [bright(magenta)] = "#df69ba",               \
++  [bright(cyan)   ] = "#35a77c", [bright(white)  ] = "#dfddc8",               \
++  [255            ] =         0, [foreground     ] = "#5c6a72",               \
++  [background     ] = "#f8f0dc",                                              \
++}
++
++#define nord {                                                                \
++  [black          ] = "#3b4252", [red            ] = "#bf616a",               \
++  [green          ] = "#a3be8c", [yellow         ] = "#ebcb8b",               \
++  [blue           ] = "#81a1c1", [magenta        ] = "#b48ead",               \
++  [cyan           ] = "#88c0d0", [white          ] = "#e5e9f0",               \
++  [bright(black)  ] = "#4c566a", [bright(red)    ] = "#bf616a",               \
++  [bright(green)  ] = "#a3be8c", [bright(yellow) ] = "#ebcb8b",               \
++  [bright(blue)   ] = "#81a1c1", [bright(magenta)] = "#b48ead",               \
++  [bright(cyan)   ] = "#8fbcbb", [bright(white)  ] = "#eceff4",               \
++  [255            ] =         0, [foreground     ] = "#d8dee9",               \
++  [background     ] = "#2e3440",                                              \
++}
++
++/* Terminal colors (16 first used in escape sequence) */
++static const char *colorname[] = dark_medium;
++
++/*
++ * Default colors (colorname index)
++ * foreground, background, cursor, reverse cursor, selection
++ */
++unsigned int defaultfg = 256;
++unsigned int defaultbg = 257;
++unsigned int defaultcs = 256;
++static unsigned int defaultrcs = 256;
++unsigned int selectionbg = 0;
++unsigned int selectionfg = 256;
++/* If 0 use selectionfg as foreground in order to have a uniform foreground-color */
++/* Else if 1 keep original foreground-color of each cell => more colors :) */
++static int ignoreselfg = 1;
+diff --git a/theme/nord.h b/theme/nord.h
+deleted file mode 100644
+index da724e7..0000000
+--- a/theme/nord.h
++++ /dev/null
+@@ -1,43 +0,0 @@
+-/* Terminal colors (16 first used in escape sequence) */
+-static const char *colorname[] = {
+-	/* 8 normal colors */
+-	"#3b4252", /* black   */
+-	"#bf616a", /* red     */
+-	"#a3be8c", /* green   */
+-	"#ebcb8b", /* yellow  */
+-	"#81a1c1", /* blue    */
+-	"#b48ead", /* magenta */
+-	"#88c0d0", /* cyan    */
+-	"#e5e9f0", /* white   */
+-
+-	/* 8 bright colors */
+-	"#4c566a", /* black   */
+-	"#bf616a", /* red     */
+-	"#a3be8c", /* green   */
+-	"#ebcb8b", /* yellow  */
+-	"#81a1c1", /* blue    */
+-	"#b48ead", /* magenta */
+-	"#8fbcbb", /* cyan    */
+-	"#eceff4", /* white   */
+-
+-	[255] = 0,
+-
+-	/* more colors can be added after 255 to use with DefaultXX */
+-	"#d8dee9", /* default foreground colour */
+-	"#2e3440", /* default background colour */
+-};
+-
+-
+-/*
+- * Default colors (colorname index)
+- * foreground, background, cursor, reverse cursor, selection
+- */
+-unsigned int defaultfg = 256;
+-unsigned int defaultbg = 257;
+-unsigned int defaultcs = 256;
+-static unsigned int defaultrcs = 256;
+-unsigned int selectionbg = 0;
+-unsigned int selectionfg = 256;
+-/* If 0 use selectionfg as foreground in order to have a uniform foreground-color */
+-/* Else if 1 keep original foreground-color of each cell => more colors :) */
+-static int ignoreselfg = 1;
+-- 
+2.37.3
+
