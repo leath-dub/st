@@ -93,7 +93,7 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-#include "theme/nord.h"
+#include "theme.h"
 
 /*
  * Default shape of cursor
