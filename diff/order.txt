@@ -2,3 +2,4 @@ st-bold-is-not-bright-20190127-3be4cf1.diff
 st-nordtheme-0.8.5.diff
 st-selectioncolors-0.8.4.diff
 st-nordtheme-selectioncolor.diff
+st-themedir-0.8.5.diff
