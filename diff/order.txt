@@ -3,3 +3,4 @@ st-nordtheme-0.8.5.diff
 st-selectioncolors-0.8.4.diff
 st-nordtheme-selectioncolor.diff
 st-themedir-0.8.5.diff
+st-everforest-theme-0.8.5.diff
