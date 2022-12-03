@@ -15,6 +15,7 @@
 !st.h
 !st.info
 !win.h
+!default.nix
 
 !diff
 !diff/*
