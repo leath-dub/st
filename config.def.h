@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Iosevka Term SS04:pixelsize=20";
-static int borderpx = 10;
+static char *font = "Iosevka Custom:pixelsize=20";
+static int borderpx = 34;
 
 /*
  * What program is execed by st depends of these precedence rules:
