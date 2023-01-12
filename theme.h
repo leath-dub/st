@@ -108,11 +108,26 @@ enum { black, red, green, yellow, blue, magenta, cyan, white,
 }
 // }}}
 
+// {{{ kanagawa
+#define kanagawa {                                                            \
+  [black          ] = "#2a2a37", [bright(black)  ] = "#363646",               \
+  [red            ] = "#e46876", [bright(red)    ] = "#ff5d62",               \
+  [green          ] = "#98bb6c", [bright(green)  ] = "#98bb6c",               \
+  [yellow         ] = "#dca561", [bright(yellow) ] = "#dca561",               \
+  [blue           ] = "#7e9cd8", [bright(blue)   ] = "#7e9cd8",               \
+  [magenta        ] = "#d27e99", [bright(magenta)] = "#d27e99",               \
+  [cyan           ] = "#7aa89f", [bright(cyan)   ] = "#7aa89f",               \
+  [white          ] = "#dcd7ba", [bright(white)  ] = "#dcd7ba",               \
+  [255            ] =         0, [foreground     ] = "#dcd7ba",               \
+  [background     ] = "#1f1f28",                                              \
+}
+// }}}
+
 /* be sure this corresponds with theme set below */
 #define DARK
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = dark_medium;
+static const char *colorname[] = kanagawa;
 
 /*
  * Default colors (colorname index)
